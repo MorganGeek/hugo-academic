@@ -1,0 +1,28 @@
+{{ $micropost := .micropost }}
+
+<div class="article-list-item" itemscope itemprop="blogMicropost">
+  {{ $preview := $micropost.Params.header.preview | default true }}
+  {{ if and $micropost.Params.header.image $preview }}
+  <a href="{{ $micropost.Permalink }}">
+    <img src="{{ "/img/" | relURL }}{{ $micropost.Params.header.image }}" class="article-banner" itemprop="image">
+  </a>
+  {{end}}
+  <h3 class="article-title" itemprop="name">
+    <a href="{{ $micropost.Permalink }}" itemprop="url">{{ $micropost.Title }}</a>
+  </h3>
+  {{ partial "article_metadata" (dict "content" $micropost "is_list" 1) }}
+  <div class="article-style" itemprop="articleBody">
+    {{ if $micropost.Params.summary }}
+    <p>{{ printf "%s" $micropost.Params.summary | markdownify }}</p>
+    {{ else if $micropost.Truncated }}
+    {{ $micropost.Summary }}
+    {{ else }}
+    {{ $micropost.Content }}
+    {{ end }}
+  </div>
+  <p class="read-more">
+    <a href="{{ $micropost.Permalink }}" class="btn btn-primary btn-outline">
+      {{ i18n "continue_reading" }}
+    </a>
+  </p>
+</div>

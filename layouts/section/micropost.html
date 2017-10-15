@@ -1,0 +1,22 @@
+{{ partial "header.html" . }}
+{{ partial "navbar.html" . }}
+
+<div class="universal-wrapper">
+
+  <h1>{{ .Title | default (i18n "microposts") }}</h1>
+
+  {{ with .Content }}
+  <div class="article-style" itemprop="articleBody">{{ . }}</div>
+  {{ end }}
+
+  {{ $paginator := .Paginate .Data.Pages }}
+  {{ range $paginator.Pages }}
+    {{ $params := dict "micropost" . }}
+    {{ partial "micropost_li" $params }}
+  {{ end }}
+
+  {{ partial "pagination" . }}
+
+</div>
+{{ partial "footer_container.html" . }}
+{{ partial "footer.html" . }}

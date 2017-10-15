@@ -11,6 +11,13 @@
     <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
   </ul>
   {{ end }}
+  
+  <h2>Recent Microposts</h2>
+  {{ range last 20 (where .Data.Pages "Section" "=" "micropost") }}
+  <ul>
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+  </ul>
+  {{ end }}
 
   <h2>Recent Publications</h2>
   {{ range last 20 (where .Data.Pages "Section" "=" "publication") }}
