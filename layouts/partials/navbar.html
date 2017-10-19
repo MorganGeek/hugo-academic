@@ -20,7 +20,7 @@
 
       <!-- Left Nav Bar -->
       {{ $.Scratch.Add "sections" .Site.Params.rsssections }}
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right rss-permalink">
         {{ range .Site.Menus.main }}
 
         {{ if .HasChildren }}
@@ -44,12 +44,19 @@
         {{ else }}
 
         <li class="nav-item">
-          <a href="{{ .URL | relLangURL }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}>
-            {{ .Pre }}
+
+          {{ if in ($.Scratch.Get "sections") .Name }}
+          <a class="rss-text" href="{{ .URL | relLangURL }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}>
+ 	   {{ .Pre }}
             <span>{{ .Name }}</span>
           </a>
-          {{ if in ($.Scratch.Get "sections") .Name }}
-            <a href="{{ .Identifier | relLangURL }}/index.xml"><img src="{{ "/img/rss.png" | relURL }}" class="rss-icon" /></a>
+            <a class="rss-icon" href="{{ .Identifier | relLangURL }}/index.xml"><img src="{{ "/img/rss.png" | relURL }}" /></a>
+
+	  {{ else }}
+          <a href="{{ .URL | relLangURL }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}>
+ 	    {{ .Pre }}
+            <span>{{ .Name }}</span>
+          </a>
 	  {{ end }}
         </li>
 

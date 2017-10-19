@@ -118,6 +118,26 @@ video {
   margin: 0 auto;
 }
 
+.rss-permalink>li>a {
+   position: relative;
+   padding: 10px 15px;
+   display: inline;
+}
+
+.rss-permalink>li>a>img {
+   max-width: none;
+   display: inline;
+}
+
+a.rss-icon {
+   padding-left: 0px !important;
+   padding-right: 0px !important;
+}
+a.rss-text {
+   padding-left: 15px !important;
+   padding-right: 0px !important;
+}
+
 figcaption:before {
   font-weight: 700;
   text-transform: uppercase;
