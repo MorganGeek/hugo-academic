@@ -23,10 +23,6 @@ url('{{ printf "img/%s" $header.overlay_img | absURL}}');
     <p class="hero-lead">{{ . | markdownify }}</p>
     {{ end }}
 
-    {{ if $page.Params.cta.url }}
-    <p><a href="{{ $page.Params.cta.url }}" class="btn btn-light btn-outline btn-large">{{ $page.Params.cta.label | safeHTML}}</a></p>
-    {{ end }}
-
   </div>
 
 </section>
