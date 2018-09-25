@@ -67,6 +67,18 @@
         </ul>
       </div>
       {{ end }}
+      
+      {{ with $page.Params.skills }}
+      <div class="col-sm-5">
+        <h3>{{ i18n "skills" | markdownify }}</h3>
+        <ul class="ul-skills">
+          {{ range .skills }}
+          <li>{{ . | markdownify }}</li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+
 
       {{ with $page.Params.education }}
       <div class="col-sm-7">

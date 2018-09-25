@@ -54,6 +54,9 @@
 
 # About widget
 
+- id: skills
+  translation: Skills
+
 - id: interests
   translation: Interests
 
